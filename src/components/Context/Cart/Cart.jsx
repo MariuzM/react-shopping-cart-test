@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import CartColumns from './CartColumns';
 import CartEmpty from './CartEmpty';
-import { ProductProvider } from '../context';
 import { ProductConsumer } from '../context';
 import CartList from './CartList';
+
+import '../../../App.scss';
 
 export default class Cart extends Component {
   render() {
@@ -11,13 +11,11 @@ export default class Cart extends Component {
       <section>
         <ProductConsumer>
           {value => {
-            console.log(value);
             const { cart } = value;
             if (cart.length > 0) {
               return (
                 <div>
                   <React.Fragment>
-                    <CartColumns />
                     <CartList value={value} />
                   </React.Fragment>
                 </div>

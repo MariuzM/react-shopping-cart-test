@@ -3,7 +3,7 @@ export const storeProducts = [
     id: 1,
     title: 'Švyturys Extra',
     price: 2.99,
-    inCart: true,
+    inCart: false,
     count: 0,
     total: 0
   },

@@ -20,7 +20,7 @@ export default class Product extends Component {
                 value.addToCart(id);
               }}
             >
-              {inCart ? <p>In Cart</p> : <i>Buy</i>}
+              {inCart ? <i>In Cart</i> : <i>Buy</i>}
             </Button>
           </Box>
         )}
