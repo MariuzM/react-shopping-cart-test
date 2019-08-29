@@ -9,26 +9,24 @@ export default class Cart extends Component {
   render() {
     return (
       <section>
-        <ProductProvider>
-          <ProductConsumer>
-            {value => {
-              console.log(value);
-              const { cart } = value;
-              if (cart.length > 0) {
-                return (
-                  <div>
-                    <React.Fragment>
-                      <CartColumns />
-                      <CartList value={value} />
-                    </React.Fragment>
-                  </div>
-                );
-              } else {
-                return <CartEmpty />;
-              }
-            }}
-          </ProductConsumer>
-        </ProductProvider>
+        <ProductConsumer>
+          {value => {
+            console.log(value);
+            const { cart } = value;
+            if (cart.length > 0) {
+              return (
+                <div>
+                  <React.Fragment>
+                    <CartColumns />
+                    <CartList value={value} />
+                  </React.Fragment>
+                </div>
+              );
+            } else {
+              return <CartEmpty />;
+            }
+          }}
+        </ProductConsumer>
       </section>
     );
   }
