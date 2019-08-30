@@ -92,7 +92,7 @@ class ProductProvider extends Component {
     product.count = product.count - 1;
     if (product.count === 0) this.removeItem(id);
     else {
-      product.total = product.count * product.price;
+      product.total = parseFloat((product.count * product.price).toFixed(2));
       this.setState(
         () => {
           return { cart: [...tempCart] };
