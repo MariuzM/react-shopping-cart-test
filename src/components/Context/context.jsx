@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { storeProducts } from '../../data';
 const ProductContext = React.createContext();
-// Provider
-
-// Consumer
 
 class ProductProvider extends Component {
   state = {
@@ -22,10 +19,7 @@ class ProductProvider extends Component {
     let tempProducts = [];
     storeProducts.forEach(item => {
       const singleItem = { ...item };
-      // console.log(tempProducts, 'first');
-      // console.log(singleItem, 'second');
       tempProducts = [...tempProducts, singleItem];
-      // console.log(tempProducts, 'third');
     });
     this.setState(() => {
       return { products: tempProducts };
@@ -36,13 +30,6 @@ class ProductProvider extends Component {
     const product = this.state.products.find(item => item.id === id);
     return product;
   };
-
-  // handleDetail = id => {
-  //   const product = this.getItem(id);
-  //   this.setState(() => {
-  //     return { detailProduct: product };
-  //   });
-  // };
 
   addToCart = id => {
     let tempProducts = [...this.state.products];
@@ -57,7 +44,6 @@ class ProductProvider extends Component {
         return {
           product: tempProducts,
           cart: [...this.state.cart, product]
-          // test: console.log(product)
         };
       },
       () => {
@@ -88,7 +74,6 @@ class ProductProvider extends Component {
         value={{
           // products: this.state.products,
           ...this.state,
-          // handleDetail: this.handleDetail,
           addToCart: this.addToCart,
           increment: this.increment,
           decrement: this.decrement,

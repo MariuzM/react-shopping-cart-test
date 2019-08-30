@@ -17,6 +17,7 @@
     "react-dom": "^16.9.0",
     "react-inlinesvg": "^1.1.5",
     "react-router-dom": "^5.0.1",
+    "react-swipeable-views": "^0.13.3",
     "react-transition-group": "^4.2.2"
   },
   "devDependencies": {

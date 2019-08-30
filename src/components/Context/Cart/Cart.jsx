@@ -8,24 +8,20 @@ import '../../../App.scss';
 export default class Cart extends Component {
   render() {
     return (
-      <section>
-        <ProductConsumer>
-          {value => {
-            const { cart } = value;
-            if (cart.length > 0) {
-              return (
-                <div>
-                  <React.Fragment>
-                    <CartList value={value} />
-                  </React.Fragment>
-                </div>
-              );
-            } else {
-              return <CartEmpty />;
-            }
-          }}
-        </ProductConsumer>
-      </section>
+      <ProductConsumer>
+        {value => {
+          const { cart } = value;
+          if (cart.length > 0) {
+            return (
+              <>
+                <CartList value={value} />
+              </>
+            );
+          } else {
+            return <CartEmpty />;
+          }
+        }}
+      </ProductConsumer>
     );
   }
 }

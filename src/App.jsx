@@ -4,8 +4,8 @@ import Container from '@material-ui/core/Container';
 
 import './App.scss';
 
-import Shopping from './components/Pages/Shopping';
-import Cart from './components/Context/Cart/Cart';
+import Shopping from './Components/Pages/Shopping';
+import Cart from './Components/Context/Cart/Cart';
 
 export default function App() {
   return (
