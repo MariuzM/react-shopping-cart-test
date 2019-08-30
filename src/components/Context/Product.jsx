@@ -13,7 +13,7 @@ export default class Product extends Component {
         {value => (
           <Box className="card card-1">
             <h3>{title}</h3>
-            <p>{price}</p>
+            <p>${price}</p>
             <Button
               disabled={inCart ? true : false}
               onClick={() => {

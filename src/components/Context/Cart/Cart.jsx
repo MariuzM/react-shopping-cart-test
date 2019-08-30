@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CartEmpty from './CartEmpty';
 import { ProductConsumer } from '../context';
 import CartList from './CartList';
+import CartTotals from './CartTotals';
 
 import '../../../App.scss';
 
@@ -15,6 +16,7 @@ export default class Cart extends Component {
             return (
               <>
                 <CartList value={value} />
+                <CartTotals value={value} />
               </>
             );
           } else {

@@ -28,7 +28,7 @@ export default function CartItem({ item, value }) {
         <Button onClick={() => removeItem(id)}>Remove Item</Button>
       </div>
       <div>
-        <strong>Item Total: $ {total} </strong>
+        <strong>Item Total: ${total} </strong>
       </div>
     </Box>
   );

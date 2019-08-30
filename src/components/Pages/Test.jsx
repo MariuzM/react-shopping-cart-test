@@ -20,6 +20,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ProductList from '../Context/ProductList';
 import Cart from '../Context/Cart/Cart';
 
+import { ProductConsumer } from '../Context/context';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
