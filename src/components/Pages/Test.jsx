@@ -9,18 +9,26 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Zoom from '@material-ui/core/Zoom';
-import Fab from '@material-ui/core/Fab';
+import RoundButton from '@material-ui/core/Fab';
 import Box from '@material-ui/core/Box';
 
-import AddIcon from '@material-ui/icons/Add';
+import NavigationIcon from '@material-ui/icons/Navigation';
 import DeleteIcon from '@material-ui/icons/Delete';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { green } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button';
+
+import { ProductConsumer } from '../Context/context';
+
 // import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import { green } from '@material-ui/core/colors';
 
 import ProductList from '../Context/ProductList';
 import Cart from '../Context/Cart/Cart';
 
-import { ProductConsumer } from '../Context/context';
+// import { ProductConsumer } from '../Context/context';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,10 +65,16 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     width: '100vw'
   },
-  fab: {
+  item: {
     position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2)
+  },
+  empty: {
+    display: 'none'
+  },
+  margin: {
+    margin: theme.spacing(6)
   }
   // fabGreen: {
   //   color: theme.palette.common.white,
@@ -89,22 +103,40 @@ export default function Floater() {
     exit: theme.transitions.duration.leavingScreen
   };
 
-  const fabs = [
+  const theme2 = createMuiTheme({
+    palette: {
+      primary: green
+    }
+  });
+
+  const roundButtons = [
     {
       color: 'primary',
-      className: classes.fab,
-      icon: <AddIcon />,
-      label: 'Add'
+      className: classes.item,
+      // className: classes.empty,
+      icon: <NavigationIcon />,
+      label: 'Next'
     },
     {
       color: 'secondary',
-      className: classes.fab,
+      className: classes.item,
       icon: <DeleteIcon />,
       label: 'Delete'
     }
   ];
 
   return (
+    // <ProductConsumer>
+    //   {value => {
+    //     const { cart } = value;
+    //     if (cart.length > 0) {
+    //       return console.log(cart.length);
+    //     } else {
+    //       // return console.log('test');
+    //     }
+    //   }}
+    // </ProductConsumer>
+
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
@@ -128,24 +160,30 @@ export default function Floater() {
         <TabPanel value={value} index={0} dir={theme.direction}>
           <ProductList />
         </TabPanel>
+
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Cart />
         </TabPanel>
       </SwipeableViews>
 
-      {fabs.map((fab, index) => (
+      {roundButtons.map((item, index) => (
         <Zoom
-          key={fab.color}
-          in={value === index}
+          key={item.color}
+          in={index === value}
           timeout={transitionDuration}
           style={{
             transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`
+            // display: `${value === 1 ? true : 'none'}`
           }}
           unmountOnExit
         >
-          <Fab aria-label={fab.label} className={fab.className} color={fab.color}>
-            {fab.icon}
-          </Fab>
+          <RoundButton
+            aria-label={item.label}
+            className={item.className}
+            color={item.color}
+          >
+            {item.icon}
+          </RoundButton>
         </Zoom>
       ))}
     </div>
