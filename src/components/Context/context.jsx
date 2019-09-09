@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { storeProducts } from '../../data';
-const ProductContext = React.createContext();
 
-class ProductProvider extends Component {
+export const ProductContext = React.createContext();
+
+export class ProductProvider extends Component {
   state = {
     products: [],
     cart: [],
@@ -156,5 +157,3 @@ class ProductProvider extends Component {
     );
   }
 }
-const ProductConsumer = ProductContext.Consumer;
-export { ProductProvider, ProductConsumer };

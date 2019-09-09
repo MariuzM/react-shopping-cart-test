@@ -5,7 +5,7 @@ export default function CartTotals({ value }) {
   const { cartSubTotal, cartTax, cartTotal, clearCart } = value;
   return (
     <>
-      <Button onClick={() => clearCart()}>Clear Cart</Button>
+      {/* <Button onClick={() => clearCart()}>Clear Cart</Button> */}
 
       <h5>
         Sub Total: $<strong>{cartSubTotal}</strong>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { ProductConsumer } from './context';
+import { ProductContext } from './context';
 import Product from './Product';
 
 export default class ProductList extends Component {
   render() {
     return (
       <div className="cardBox">
-        <ProductConsumer>
+        <ProductContext.Consumer>
           {value => {
             return value.products.map(prod => {
               // eslint-disable-next-line
@@ -19,7 +19,7 @@ export default class ProductList extends Component {
               );
             });
           }}
-        </ProductConsumer>
+        </ProductContext.Consumer>
       </div>
     );
   }

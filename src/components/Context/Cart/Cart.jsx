@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CartEmpty from './CartEmpty';
-import { ProductConsumer } from '../context';
+import { ProductContext } from '../context';
 import CartList from './CartList';
 import CartTotals from './CartTotals';
 
@@ -9,7 +9,7 @@ import '../../../App.scss';
 export default class Cart extends Component {
   render() {
     return (
-      <ProductConsumer>
+      <ProductContext.Consumer>
         {value => {
           const { cart } = value;
           if (cart.length > 0) {
@@ -23,7 +23,7 @@ export default class Cart extends Component {
             return <CartEmpty />;
           }
         }}
-      </ProductConsumer>
+      </ProductContext.Consumer>
     );
   }
 }

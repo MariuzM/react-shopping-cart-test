@@ -1,34 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import clsx from 'clsx';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Zoom from '@material-ui/core/Zoom';
-import RoundButton from '@material-ui/core/Fab';
-import Box from '@material-ui/core/Box';
-
-import NavigationIcon from '@material-ui/icons/Navigation';
-import DeleteIcon from '@material-ui/icons/Delete';
-
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { green } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
-
-import { ProductConsumer } from '../Context/context';
-
-// import UpIcon from '@material-ui/icons/KeyboardArrowUp';
-// import { green } from '@material-ui/core/colors';
-
 import ProductList from '../Context/ProductList';
 import Cart from '../Context/Cart/Cart';
 
-// import { ProductConsumer } from '../Context/context';
+import SwipeableViews from 'react-swipeable-views';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { AppBar, Tabs, Tab, Typography, Zoom, Box } from '@material-ui/core';
+import RoundButton from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+
+import { ProductContext } from '../Context/context';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,12 +29,6 @@ function TabPanel(props) {
     </Typography>
   );
 }
-
-// TabPanel.propTypes = {
-//   children: PropTypes.node,
-//   index: PropTypes.any.isRequired,
-//   value: PropTypes.any.isRequired
-// };
 
 function a11yProps(index) {
   return {
@@ -76,19 +53,13 @@ const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(6)
   }
-  // fabGreen: {
-  //   color: theme.palette.common.white,
-  //   backgroundColor: green[500],
-  //   '&:hover': {
-  //     backgroundColor: green[600]
-  //   }
-  // }
 }));
 
 export default function Floater() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const { clearCart } = React.useContext(ProductContext);
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -103,11 +74,11 @@ export default function Floater() {
     exit: theme.transitions.duration.leavingScreen
   };
 
-  const theme2 = createMuiTheme({
-    palette: {
-      primary: green
-    }
-  });
+  // const theme2 = createMuiTheme({
+  //   palette: {
+  //     primary: green
+  //   }
+  // });
 
   const roundButtons = [
     {
@@ -120,23 +91,12 @@ export default function Floater() {
     {
       color: 'secondary',
       className: classes.item,
-      icon: <DeleteIcon />,
+      icon: <DeleteIcon onClick={clearCart} />,
       label: 'Delete'
     }
   ];
 
   return (
-    // <ProductConsumer>
-    //   {value => {
-    //     const { cart } = value;
-    //     if (cart.length > 0) {
-    //       return console.log(cart.length);
-    //     } else {
-    //       // return console.log('test');
-    //     }
-    //   }}
-    // </ProductConsumer>
-
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs

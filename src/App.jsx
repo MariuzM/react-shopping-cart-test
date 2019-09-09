@@ -9,11 +9,9 @@ import Cart from './Components/Context/Cart/Cart';
 
 export default function App() {
   return (
-    <div>
-      <Container className="marginTop">
-        <Route exact path="/" component={Shopping} />
-        <Route path="/cart" component={Cart} />
-      </Container>
-    </div>
+    <Container className="marginTop">
+      <Route exact path="/" component={Shopping} />
+      <Route path="/cart" component={Cart} />
+    </Container>
   );
 }
