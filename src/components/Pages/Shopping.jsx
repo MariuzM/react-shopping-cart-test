@@ -1,6 +1,6 @@
-import React from 'react';
-import { ProductProvider } from '../Context/context';
-import Floater from './Floater';
+import React from 'react'
+import { ProductProvider } from '../Context/context'
+import Floater from './Floater'
 
 export default function Shopping() {
   return (
@@ -9,5 +9,5 @@ export default function Shopping() {
         <Floater />
       </ProductProvider>
     </>
-  );
+  )
 }

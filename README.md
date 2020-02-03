@@ -1,11 +1,17 @@
-# React Shopping Cart Test
+# Shopping Cart Component
 
-Creating Shopping Cart to with Context
+Created simple Shopping cart component that will allow to add and review total items.
 
-# NPM Install
+### Installing
 
-`npm install` or `npm i`
+```
+npm install
+```
 
-## License
+## Built With
 
-[MIT](https://choosealicense.com/licenses/mit/)
+- As of 2020-02-02 all latest packages
+- Class and Functions
+- Hooks
+- Context for state management
+- Mateiral UI

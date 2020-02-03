@@ -1,14 +1,14 @@
-const path = require('path');
-const common = require('./webpack.common');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const common = require('./webpack.common')
+const merge = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'development',
   // target: 'web',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     stats: {
@@ -20,24 +20,24 @@ module.exports = merge(common, {
       timings: true,
       errors: true,
       errorDetails: true,
-      outputPath: false
+      outputPath: false,
     },
     // stats: 'minimal',
     overlay: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
       // favicon: './src/favicon.ico'
-    })
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
-  }
-});
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+})

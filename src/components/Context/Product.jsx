@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import { ProductContext } from './context';
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import { ProductContext } from './context'
 
 export default class Product extends Component {
   render() {
-    // eslint-disable-next-line
-    const { id, title, img, price, inCart } = this.props.product;
+    const { id, title, img, price, inCart } = this.props.product
     return (
       <ProductContext.Consumer>
         {value => (
@@ -17,7 +16,7 @@ export default class Product extends Component {
             <Button
               disabled={inCart ? true : false}
               onClick={() => {
-                value.addToCart(id);
+                value.addToCart(id)
               }}
             >
               {inCart ? <i>In Cart</i> : <i>Buy</i>}
@@ -25,6 +24,6 @@ export default class Product extends Component {
           </Box>
         )}
       </ProductContext.Consumer>
-    );
+    )
   }
 }

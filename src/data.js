@@ -5,7 +5,7 @@ export const storeProducts = [
     price: 100,
     inCart: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const storeProducts = [
     price: 4.99,
     inCart: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const storeProducts = [
     price: 2.99,
     inCart: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 4,
@@ -29,6 +29,6 @@ export const storeProducts = [
     price: 2.99,
     inCart: false,
     count: 0,
-    total: 0
-  }
-];
+    total: 0,
+  },
+]

@@ -1,21 +1,17 @@
-import React from 'react';
-import ProductList from '../Context/ProductList';
-import Cart from '../Context/Cart/Cart';
+import React from 'react'
+import ProductList from '../Context/ProductList'
+import Cart from '../Context/Cart/Cart'
 
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { AppBar, Tabs, Tab, Typography, Zoom, Box } from '@material-ui/core';
-import RoundButton from '@material-ui/core/Fab';
-import NavigationIcon from '@material-ui/icons/Navigation';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import SwipeableViews from 'react-swipeable-views'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { AppBar, Tabs, Tab, Typography, Zoom, Box } from '@material-ui/core'
+import RoundButton from '@material-ui/core/Fab'
+import NavigationIcon from '@material-ui/icons/Navigation'
+import DeleteIcon from '@material-ui/icons/Delete'
 
-import { ProductContext } from '../Context/context';
+import { ProductContext } from '../Context/context'
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
+function TabPanel({ children, value, index, ...other }) {
   return (
     <Typography
       component="div"
@@ -27,74 +23,67 @@ function TabPanel(props) {
     >
       <Box p={3}>{children}</Box>
     </Typography>
-  );
+  )
 }
 
 function a11yProps(index) {
   return {
     id: `action-tab-${index}`,
-    'aria-controls': `action-tabpanel-${index}`
-  };
+    'aria-controls': `action-tabpanel-${index}`,
+  }
 }
 
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: '100vw'
+    width: '100vw',
   },
   item: {
     position: 'fixed',
     bottom: theme.spacing(2),
-    right: theme.spacing(2)
+    right: theme.spacing(2),
   },
   empty: {
-    display: 'none'
+    display: 'none',
   },
   margin: {
-    margin: theme.spacing(6)
-  }
-}));
+    margin: theme.spacing(6),
+  },
+}))
 
 export default function Floater() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [value, setValue] = React.useState(0);
-  const { clearCart } = React.useContext(ProductContext);
+  const classes = useStyles()
+  const theme = useTheme()
+  const [value, setValue] = React.useState(0)
+  const { clearCart } = React.useContext(ProductContext)
 
   function handleChange(event, newValue) {
-    setValue(newValue);
+    setValue(newValue)
   }
 
   function handleChangeIndex(index) {
-    setValue(index);
+    setValue(index)
   }
 
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen
-  };
-
-  // const theme2 = createMuiTheme({
-  //   palette: {
-  //     primary: green
-  //   }
-  // });
+    exit: theme.transitions.duration.leavingScreen,
+  }
 
   const roundButtons = [
     {
       color: 'primary',
       className: classes.item,
-      // className: classes.empty,
       icon: <NavigationIcon />,
-      label: 'Next'
+      label: 'Next',
     },
     {
       color: 'secondary',
       className: classes.item,
       icon: <DeleteIcon onClick={clearCart} />,
-      label: 'Delete'
-    }
-  ];
+      label: 'Delete',
+    },
+  ]
 
   return (
     <div className={classes.root}>
@@ -132,20 +121,15 @@ export default function Floater() {
           in={index === value}
           timeout={transitionDuration}
           style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`
-            // display: `${value === 1 ? true : 'none'}`
+            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
           }}
           unmountOnExit
         >
-          <RoundButton
-            aria-label={item.label}
-            className={item.className}
-            color={item.color}
-          >
+          <RoundButton aria-label={item.label} className={item.className} color={item.color}>
             {item.icon}
           </RoundButton>
         </Zoom>
       ))}
     </div>
-  );
+  )
 }
